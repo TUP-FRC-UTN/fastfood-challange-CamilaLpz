@@ -1,0 +1,34 @@
+<div class="contenedor">
+    <h3><b>Ordene aquí</b></h3>
+    <br>
+    <form #AltaOrden="ngForm" (ngSubmit)="validar(AltaOrden)" action="">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="inputNombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="nuevoPedido.name" required>
+                @if (nombre.dirty || nombre.touched) {
+                    @if(nombre.errors && nombre.errors['required']){
+                        <div class="text-danger">Ingrese su nombre</div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="inputPedido" class="form-label">Pedido</label>
+                <input type="text" class="form-control" id="inputPedido" name="pedido" #pedido="ngModel" [(ngModel)]="nuevoPedido.description" required>
+                @if(pedido.dirty || pedido.touched) {
+                    @if(pedido.errors && pedido.errors['required']){
+                        <div class="text-danger">Ingrese su orden</div>
+                    }
+                }
+                
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" [disabled]="AltaOrden.invalid">Ordenar</button>
+            </div>
+        </div>
+    </form>
+</div>

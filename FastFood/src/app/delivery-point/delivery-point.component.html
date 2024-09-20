@@ -1,0 +1,14 @@
+<div class="contenedor">
+    <h4>Pedidos listos para entregar</h4>
+    <div class="border border-dark rounded p-3">
+        @if(lEntregados.length){
+            @for (entrega of lEntregados; track $index) {
+                <li>{{mostrarPedido(entrega)}} <button type="button" class="btn btn-primary" (click)="entregar(entrega)">Entregar</button></li>
+            }
+        }
+        @else {
+            <span>Aún no hay pedidos preparados!!!</span>
+        }
+        
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container bg-light p-3">
+    <h1 style="text-align: center;">Restaurant FastFood</h1>
+    <br>
+    <h4>Pedidos ingresados</h4>
+    <div class="border border-dark rounded p-3">
+        @if (!lPedidosIngresados.length) {
+            <span>Aún no hay pedidos!!!</span>
+        }
+        @else {
+            @for (pedido of lPedidosIngresados; track $index) {
+                <li>{{mostrarPedido(pedido)}}</li>
+            }
+        }
+    </div>
+    <br>
+    
+    <app-delivery-point [lEntregados]="lPedidosEntrega"></app-delivery-point>
+    
+    <br>
+    <hr>
+    <app-pos (crearPedido)="agregarPedido($event)"></app-pos>
+    <hr>
+    <h3><b>Cocina</b></h3>
+    <br>
+    <app-kitchen [lPedidos]="lPedidos" (terminado)="agregarEntrega($event)"></app-kitchen>
+</div>

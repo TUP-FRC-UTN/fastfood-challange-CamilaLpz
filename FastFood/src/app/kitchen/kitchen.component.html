@@ -1,0 +1,16 @@
+<div class="contenedor">
+    <h4>Pendiente de Cocinar</h4>
+    <div class="border border-dark rounded p-3">
+        @if(lPendiente.length){
+            @for (pendiente of lPendiente; track $index) {
+                <li>{{mostrarPedido(pendiente)}} <button type="button" class="btn btn-primary" [disabled]="pedidoCocinandose" (click)="cocinar(pendiente)">Cocinar</button></li>
+            }
+        } 
+    </div>
+    <br>
+    <h4>Pedidos en Cocción</h4>
+    @if (pedidoCocinandose) {
+        <li>{{mostrarPedido(pedidoCocinandose)}}</li>
+    }
+    <button type="button" class="btn btn-primary" [disabled]="!pedidoCocinandose" (click)="terminar()">Cocinar</button>
+</div>
